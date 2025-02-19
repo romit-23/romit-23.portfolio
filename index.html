@@ -27,21 +27,21 @@
           font-family: 'Inter', sans-serif;
           line-height: 1.6;
           color: var(--text-color);
-          background: var(--bg-color) url('bg/bg2.jpg') no-repeat center center fixed;
+          background: #000000 ;
           background-size: cover;
           overflow-x: hidden;
           width: 100%;
       }
       /* Background Video */
-.video-bg {
+      .video-bg {
     position: fixed;
-    top: 40px;
+    top: 0;
     left: 0;
-
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     z-index: -1;
+    transition: transform 0.2s ease-out; /* Smooth transition */
 }
 
 .video-bg video {
@@ -49,6 +49,7 @@
     height: 100%;
     object-fit: cover;
 }
+
 
 
 
@@ -388,12 +389,13 @@
 </head>
 
   <body>
-    <div class="video-bg">
+    <div class="video-bg" data-move>
       <video autoplay muted loop>
           <source src="bg/video.mp4" type="video/mp4">
           Your browser does not support the video tag.
       </video>
   </div>
+  
   
       <nav class="navbar">
           <div class="nav-content">
@@ -539,7 +541,6 @@
       <p>&copy; 2025 Romit Addagatla. All Rights Reserved.</p>
   </footer>
   
-
-
+  <script src="script.js"></script>
 </body>
 </html>
