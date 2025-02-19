@@ -1,135 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>addromit.dev</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="bg/logo.png">
+    <link rel="icon" type="image/png" href="/home/adra2307/Documents/Portfolio_2/logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --text-color: #000000;
+            --bg-color: #ffffff;
+            --grid-gap: 2rem;
+            --nav-height: 60px;
+            --links-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          line-height: 1.6;
+          color: var(--text-color);
+          background: var(--bg-color) url('bg/bg2.jpg') no-repeat center center fixed;
+          background-size: cover;
+          overflow-x: hidden;
+          width: 100%;
+      }
+      /* Background Video */
+.video-bg {
+    position: fixed;
+    top: 40px;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+        /* Navbar */
+        .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #222222;
+    box-shadow: rgba(29, 29, 29, 0.5) 0px 5px 5px; /* Increased opacity and spread */
+    padding: 0 1rem;
+}
+
+
+        .nav-content {
+            max-width: 100%;
+            height: 100%;
+            margin: 0px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0rem;
+        }
+
+        .logo {
+
+            margin-right: 0rem;
+            margin-top: 10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0 1rem;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--links-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .nav-links svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover svg {
+            transform: translateY(-4px);
+        }
+
+        .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .logo img {
+                height: 28px;
+            }
+        }
+
+        .cv-button {
+        flex-shrink: 0;
+      
+    }
+
+    .cv-button button {
+        padding: 0.5rem 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.3rem;
+        cursor: pointer;
+        font-weight: 500;
+        white-space: nowrap;
+        min-width: 60px; /* Reduced from 120px */
+        transition: background 0.3s ease;
+    }
+
+    .cv-button button:hover {
+        background: #333333; /* Slightly darker shade on hover */
+    }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            align-items: center;
+            
+            box-shadow: 0 -60px 60px rgba(0, 0, 0, 0.4),0 60px 60px rgba(0, 0, 0, 0.4);
+            padding: 3em;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+    font-size: clamp(4rem, 8vw, 10rem);
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+
+}
+
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: #ffffff;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        /* About & Projects Sections */
+        .about {
+            min-height: 100vh;
+           
+            display: flex;
+            align-items: center;
+        }
+        .projects {
+            min-height: 100vh;
+         
+            padding: 4rem 1rem;
+            display: flex;
+            color: #ffffff;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 -60px 60px rgba(0, 0, 0, 0.4),0 60px 60px rgba(0, 0, 0, 0.4);
+            
+          
+        }
+        .projects a:hover {
+                      text-decoration: underline;
+                      color: #ffffff;
+                    }
+
+        .about {
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    box-shadow: 0 -60px 60px rgba(0, 0, 0, 0.4),0 60px 60px rgba(0, 0, 0, 0.4);
+    padding: 3rem;
+}
+
+
+
+
+
+        .section-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .section-title h2{
+          font-size: 3em;
+        }
+        
+        .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the entire row */
+    gap: 0.5rem;
+    margin-top: 2rem;
+    color: #ffffff;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Center individual items */
+.skill-item {
+    background: rgba(112, 112, 112, 0.5);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centers content inside each item */
+    align-items: center; /* Centers content inside each item */
+    min-width: 100px;
+    height: 50px; /* Ensures consistent height */
+    flex: 1 1 calc(50% - 1rem); /* Makes sure each row has 2 items minimum */
+    max-width: 200px; /* Prevents items from stretching too much */
+}
+
+/* Ensures at least 2 columns per row and centers them */
+@media (max-width: 480px) {
+    .skills-grid {
+        justify-content: center; /* Keeps rows centered */
+    }
+    .skill-item {
+        flex: 1 1 calc(50% - 1rem); /* Two per row */
+        max-width: 140px;
+    }
+}
+
+
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+          background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 -2px 16px rgba(83, 83, 83, 0.7);
+            text-align: center;
+            justify-content: center; /* Centers items horizontally */
+
+        }
+
+        .project-card a {
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.project-card a:hover {
+    transform: translateY(-4px);
+    text-shadow: 4px 4px 8px rgba(255, 255, 255, 0.4);
+}
+
+        .footer {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    color: #ffffff;
+    font-size: 0.9rem;
+    position: relative; /* Keeps it at the bottom without overlapping */
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 1rem; /* Adjust padding for smaller screens */
+        font-size: 0.8rem;
+    }
+}
+
+       
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 0.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .cv-button button {
+            padding: 0.4rem 0.8rem;
+            min-width: 50px; /* Reduced from 100px */
+        }.cv-button button {
+                padding: 0.4rem 0.2rem;
+                min-width: 100px;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-content {
+                padding: 0 0.25rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem;
+            }
+
+            .cv-button button {
+            padding: 0.3rem 0.6rem;
+            min-width: 40px; /* Reduced from 90px */
+        }
+        }
+    </style>
 </head>
 
-<<<<<<< HEAD
-<body style="background-image: url('bg/bg1.png'); background-size: cover; background-position: center;">
-=======
-<body>
->>>>>>> f0a9bad (Add hover effect and make containers trans)
-  <nav class="navbar">
-    <a href="javascript:void(0)" class="logo">
-      <img src="bg/logo.png" alt="Logo" />
-    </a>
-    <ul>
-      <li><a href="https://github.com/romit-23" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
-        </svg>
-      </a></li>
-      <li><a href="https://www.linkedin.com/in/romit-addagatla/" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path>
-        </svg>
-      </a></li>
-      <li><a href="https://www.instagram.com/romit.23/" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-        </svg>
-      </a></li>
-      <li><a href="mailto:addromit2307@gmail.com" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 32 32">
-          <path d="M28 5H4c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h24c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2zm0 4.879L16 18 4 9.879V7l12 8 12-8v2.879zM4 23V11.885l11.446 7.63c.269.18.594.274.921.274s.652-.094.92-.274L28 11.885V23H4z"></path>
-        </svg>
-      </a></li>
-    </ul>
-    <a href="https://drive.google.com/file/d/10YRGEFwVi26PFVIhZfDttvvhj9DI8QWu/view" target="_blank" class="resume">
-      <button>CV</button>
-    </a>
-  </nav>
-</body>
-
-  <!-- <div class="video-background"> -->
-    <div class="image-background" src="bg/bg.png"></div>
-    <!-- <video autoplay muted loop id="bg-video">
-      <source src="/home/adra2307/Documents/Project/portfolio/bg/bgv.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video> -->
+  <body>
+    <div class="video-bg">
+      <video autoplay muted loop>
+          <source src="bg/video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
   </div>
- 
-    <div class="container">
-        <header>
+  
+      <nav class="navbar">
+          <div class="nav-content">
+              <a href="javascript:void(0)" class="logo">
+                  <img src="/home/adra2307/Documents/Portfolio_2/logo.png" alt="Logo" />
+              </a>
+              <ul class="nav-links">
+                  <li><a href="https://github.com/romit-23" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                      </svg>
+                  </a></li>
+                  <li><a href="https://www.linkedin.com/in/romit-addagatla/" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path>
+                      </svg>
+                  </a></li>
+                  <li><a href="https://www.instagram.com/romit.23/" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                      </svg>
+                  </a></li>
+                  <li><a href="mailto:addromit2307@gmail.com" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 32 32">
+                          <path d="M28 5H4c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h24c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2zm0 4.879L16 18 4 9.879V7l12 8 12-8v2.879zM4 23V11.885l11.446 7.63c.269.18.594.274.921.274s.652-.094.92-.274L28 11.885V23H4z"></path>
+                      </svg>
+                  </a></li>
+              </ul>
+              <div class="cv-button">
+                <a href="https://drive.google.com/file/d/10YRGEFwVi26PFVIhZfDttvvhj9DI8QWu/view" target="_blank">
+                    <button>CV</button>
+                </a>
+            </div>
+            
+          </div>
+      </nav>
+  
+
+
+    <section class="hero">
+        <div class="hero-content">
             <h1>Romit Addagatla</h1>
             <p>AI & ML Engineer</p>
-        </header>
-        <!-- Slideshow container -->
-      <div class="slideshow-container">
-
-               <!-- Full-width videos with number and caption text -->
-                <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <video src="bg/slide.mp4" style="width:100%" autoplay muted loop></video>
-          <div class="text">
-            <a href="https://github.com/romit-23/News-translation-and-TTS" target="_blank">
-            News-translation-and-TTS &#x2197</a>
-            <p>Automates extraction, translation, and TTS of web news articles in Indic languages
-              using Docker and FastAPI. Uses newspaper3k for content extraction, IndicTrans2
-              for translation and speech generation.</p>
-          </div>
-          
         </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <video src="bg/slide.mp4" style="width:100%" autoplay muted loop></video>
-          <div class="text">
-            <a href="https://github.com/romit-23/HemoVision" target="_blank">
-              HemoVision &#x2197</a>
-            <p>Uses Haar cascade to detect the eye in conjunctival images and segmentation to
-              analyze POIs. Aims to estimate hemoglobin levels non-invasively.</p>
-          </div>
-          
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <video src="bg/slide.mp4" style="width:100%" autoplay muted loop></video>
-          <div class="text">
-            <a href="https://github.com/romit-23/News-translation-and-TTS" target="_blank">
-              Fruit Disease Detection &#x2197</a>
-            <p>Combines DenseNet and EfficientNet to improve accuracy and efficiency in fruit disease detection. Benchmarked
-              against DenseNet, EfficientNet, and CNN, showing superior performance.</p>
-          </div>
-          
-        </div>
+    </section>
 
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-      <br>
-
-          <!-- The dots/circles -->
-      <div class="dot-container" style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-
-</div>
-    </div>
-    <div class="container2">
-     
-      <div class="card2">
-        
-                <span>About Me</span>
-      
-        <div class="info">
-          <p>
-            I’m an AI 🤖 and ML enthusiast,<br>
-            pursuing a B.E. in AI & ML 🎓 <br> at SIES Graduate School of Technology.
-          </p>
-          <h2>Skills</h2>
-          <h3>| Python | Javascript | Docker | <br> | AWS | Tensorflow | Pytorch |<br>| MySQL | Keras | LLM |<br>| Transformers | NLP | Tableau |</h3>
+    <section class="about">
+        <div class="section-content">
+            <h2 class="section-title">About Me</h2>
+            <p>I'm an AI and ML enthusiast, pursuing a B.E. in AI & ML at SIES Graduate School of Technology.</p>
+            <div class="skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Docker</div>
+                <div class="skill-item">AWS</div>
+                <div class="skill-item">TensorFlow</div>
+                <div class="skill-item">PyTorch</div>
+                <div class="skill-item">MySQL</div>
+                <div class="skill-item">Keras</div>
+                <div class="skill-item">LLM</div>
+                <div class="skill-item">Transformers</div>
+                <div class="skill-item">NLP</div>
+                <div class="skill-item">Tableau</div>
+            </div>
         </div>
-     
-<script src="script.js"></script>
+    </section>
+
+    <section class="projects">
+        <div class="section-content">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                  <h3 style="font-family: 'Times New Roman', Times, serif;">
+                    <a href="https://github.com/romit-23/News-translation-and-TTS" target="_blank" 
+                    style="color: rgb(255, 255, 255); 
+                           text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2); 
+                           text-decoration: none; 
+                           display: inline-flex; 
+                            font-size: 1.2em;
+                            margin-top: 20px;
+                           align-items: center;
+                           font-weight: 800;">
+                     News Article Translation and Text to Speech in Indic languages &#x2197;
+                 </a>
+                 
+                  </h3>
+
+                   <br>
+                    <p style="font-family: Arial, Helvetica, sans-serif;margin-bottom: 20px;">Automates extraction, translation, and TTS of web news articles in Indic languages
+                      using Docker and FastAPI. Uses newspaper3k for content extraction, IndicTrans2
+                      for translation, and Facebook’s TTSMMS for speech generation.<br>
+                      <br>
+                      Tools Used: Facebook’s TTSMMS, IndicTrans2 , Transformers , Docker , HTML , CSS</p>
+                </div>
+                <div class="project-card">
+                  <h3 style="font-family: 'Times New Roman', Times, serif;">
+                    <a href="https://github.com/romit-23/HemoVision" target="_blank" 
+                    style="color: rgb(255, 255, 255); 
+                           text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2); 
+                           text-decoration: none; 
+                           display: inline-flex; 
+                            font-size: 1.2em;
+                            margin-top: 20px;
+                           align-items: center;
+                           font-weight: 800;">
+                     Heamoglobin estimation using Conjucntival images &#x2197;
+                 </a>
+                 
+                  </h3>
+
+                   <br>
+                    <p style="font-family: Arial, Helvetica, sans-serif;margin-bottom: 20px;">Uses Haar cascade to detect the eye in conjunctival images and segmentation to
+                      analyze POIs. Aims to estimate hemoglobin levels non-invasively.<br>
+                      <br>
+                      Tools Used: Tools Used: Open CV, HTML/CSS, JavaScript</p>
+                </div>
+                <div class="project-card">
+                  <h3 style="font-family: 'Times New Roman', Times, serif;">
+                    <a href="https://github.com/romit-23/News-translation-and-TTS" target="_blank" 
+                    style="color: rgb(255, 255, 255); 
+                           text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2); 
+                           text-decoration: none; 
+                           display: inline-flex; 
+                            font-size: 1.2em;
+                            margin-top: 20px;
+                           align-items: center;
+                           font-weight: 800;">
+                     Fruit Disease Detection &#x2197;
+                 </a>
+                 
+                  </h3>
+
+                   <br>
+                    <p style="font-family: Arial, Helvetica, sans-serif;margin-bottom: 20px;">Combines DenseNet and EfficientNet to improve accuracy and efficiency in fruit disease detection. Benchmarked
+                      against DenseNet, EfficientNet, and CNN, showing superior performance.<br>
+                      <br>
+                      Tools Used:Python , HTML/CSS , Javascript</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+      <p>&copy; 2025 Romit Addagatla. All Rights Reserved.</p>
+  </footer>
+  
+
+
 </body>
 </html>
