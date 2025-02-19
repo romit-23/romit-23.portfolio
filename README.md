@@ -1,9 +1,9 @@
 # MyPortfolio
 <div align="center">
 
-![Image 1](https://your-image-link-1.com)
-![Image 2](https://your-image-link-2.com)
-![Image 3](https://your-image-link-3.com)
+![Image 1](bg/page-1.png)
+![Image 2](bg/page-2.png)
+![Image 3](bg/page-3.png)
 
 🔗 [Visit My Portfolio](https://your-portfolio-link.com)
 
